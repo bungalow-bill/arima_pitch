@@ -1,17 +1,7 @@
----
-output:
-  slidy_presentation:
-    keep_md: yes
----
 
 ## Exploring Time Series Data
 by David Currie, Oct 2014   
-```{r firstslide, echo=FALSE,fig.align='center',message=FALSE}
-library(forecast)
-library(fpp)
-fit <- auto.arima(usmelec,seasonal=TRUE)
-plot(forecast(fit), ylab="Billion kWHr", xlab="Year",main="Forecast Monthly US Electricity Generation")
-```
+<img src="./index_files/figure-slidy/firstslide.png" title="plot of chunk firstslide" alt="plot of chunk firstslide" style="display: block; margin: auto;" />
 
   [This application is available as a Shiny app.](https://geoanalytic.shinyapps.io/arima_models/)
 
@@ -20,16 +10,7 @@ plot(forecast(fit), ylab="Billion kWHr", xlab="Year",main="Forecast Monthly US E
 ### Goals
 Forecasting from time series data is an interesting but difficult problem.  Using examples from the text [Forecasting: principles and practice](http://otexts.org/fpp/), written by [R. Hyndman](http://robjhyndman.com/) and G. Athanasopoulos, this interactive website allows the user to explore a few key topics.  The code is based on functions provided in the `Forecast` package.   
 
-```{r secondslide,echo=FALSE,fig.align='right'}
-par(mfrow = c(2,3))
-plot(dj, main = "Dow Jones", xlab = "Day")
-plot(hsales, main = "Home Sales", xlab = "Year")
-plot(lynx, main = "Lynx", xlab = "Year")
-plot(beer, main = "Beer", xlab = "Year")
-plot(elec, main = "Aus Electricity", xlab = "Year")
-plot(a10, main = "Prescriptions", xlab = "Year")
-par(mfrow=c(1,1))
-```
+<img src="./index_files/figure-slidy/secondslide.png" title="plot of chunk secondslide" alt="plot of chunk secondslide" style="display: block; margin: auto 0 auto auto;" />
 
 
 ---
@@ -37,19 +18,13 @@ par(mfrow=c(1,1))
 ### Stationarity and Differencing   
 Time series data can contain linear and cyclic trends, in addition to random signals, that make modelling difficult. Removing these effects prior to analysis allows the underlying signal to be observed. Pre-processing of the time series can be done using logs and sequential differencing.   
 
-```{r thirdslide,echo=FALSE,fig.align='center'}
-eeadj <- seasadj(stl(elecequip, s.window="periodic"))
-tsdisplay(diff(eeadj), main="Seasonally adjusted new orders index")
-```
+<img src="./index_files/figure-slidy/thirdslide.png" title="plot of chunk thirdslide" alt="plot of chunk thirdslide" style="display: block; margin: auto;" />
 
 ---
 
 ### ARIMA Models   
 **A**uto**R**egressive **I**ntegrated **M**oving **A**verage models estimate the autocorrelations within the data in order to account for trends and cycles.  Very effective forecasts may be computed from such a model.   
-```{r fourthslide, echo=FALSE,fig.align='center'}
-fit <- auto.arima(beer,seasonal=TRUE)
-plot(forecast(fit), ylab="Megaliters", xlab="Year",main="Forecast Monthly Australian Beer Production")
-```
+<img src="./index_files/figure-slidy/fourthslide.png" title="plot of chunk fourthslide" alt="plot of chunk fourthslide" style="display: block; margin: auto;" />
 
 ---
 
